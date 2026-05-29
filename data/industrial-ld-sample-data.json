@@ -1,0 +1,498 @@
+{
+  "product": "SkillPath AI for Tata Steel Jamshedpur",
+  "purpose": "AI-enabled L&D intelligence for role-level skill visibility, shopfloor coaching, and expert knowledge capture at Tata Steel Limited, Jamshedpur Works.",
+  "companyContext": {
+    "company": "Tata Steel Limited",
+    "site": "Jamshedpur Works",
+    "industry": "Integrated steel manufacturing",
+    "positioning": "A pilot-ready L&D intelligence system for critical steel plant roles."
+  },
+  "roles": [
+    {
+      "id": "blast-furnace-operator",
+      "name": "Blast Furnace Operator",
+      "riskOwner": "Iron Making + Safety",
+      "sampleQuestion": "What should I check when furnace temperature trend becomes unstable?",
+      "businessExposure": "hot metal quality variation, furnace instability, safety exposure, production loss",
+      "workers": [
+        {
+          "id": "rakesh",
+          "name": "Rakesh K.",
+          "tenure": "8 months",
+          "assessment": 61,
+          "trainingPrecision": 46,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.54,
+            "avgAssessmentScore": 61,
+            "lastTrainingDate": "2025-11-12",
+            "genericAssignments": 7,
+            "roleRelevantAssignments": 3,
+            "onboardingWeeksActual": 16,
+            "repeatQuestionsToSupervisor": 5
+          }
+        },
+        {
+          "id": "suman",
+          "name": "Suman P.",
+          "tenure": "4 years",
+          "assessment": 76,
+          "trainingPrecision": 65,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.62,
+            "avgAssessmentScore": 67,
+            "lastTrainingDate": "2025-12-01",
+            "genericAssignments": 6,
+            "roleRelevantAssignments": 4,
+            "onboardingWeeksActual": 14,
+            "repeatQuestionsToSupervisor": 4
+          }
+        },
+        {
+          "id": "arvind",
+          "name": "Arvind S.",
+          "tenure": "17 years",
+          "assessment": 91,
+          "trainingPrecision": 82,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.71,
+            "avgAssessmentScore": 74,
+            "lastTrainingDate": "2026-01-08",
+            "genericAssignments": 5,
+            "roleRelevantAssignments": 5,
+            "onboardingWeeksActual": 12,
+            "repeatQuestionsToSupervisor": 3
+          }
+        }
+      ],
+      "criticalSkills": [
+        {
+          "skill": "Furnace parameter monitoring",
+          "required": 5,
+          "current": 3,
+          "risk": "safety",
+          "weight": 5,
+          "evidence": "delayed escalation during abnormal temperature trend simulation"
+        },
+        {
+          "skill": "Burden distribution awareness",
+          "required": 4,
+          "current": 2,
+          "risk": "quality",
+          "weight": 5,
+          "evidence": "needs coaching on link between burden pattern and hot metal consistency"
+        },
+        {
+          "skill": "Gas safety and isolation",
+          "required": 5,
+          "current": 4,
+          "risk": "safety",
+          "weight": 5,
+          "evidence": "recertification due and supervisor sign-off pending"
+        },
+        {
+          "skill": "Abnormality escalation",
+          "required": 4,
+          "current": 2,
+          "risk": "uptime",
+          "weight": 4,
+          "evidence": "shift log shows incomplete abnormality description"
+        }
+      ]
+    },
+    {
+      "id": "steel-melting-shop-technician",
+      "name": "Steel Melting Shop Technician",
+      "riskOwner": "Steel Making + Quality",
+      "sampleQuestion": "How should I respond when ladle temperature is outside the target range?",
+      "businessExposure": "heat chemistry deviation, rework, casting delay, safety-critical molten metal handling",
+      "workers": [
+        {
+          "id": "neha",
+          "name": "Neha T.",
+          "tenure": "1 year",
+          "assessment": 64,
+          "trainingPrecision": 52,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.54,
+            "avgAssessmentScore": 61,
+            "lastTrainingDate": "2025-11-12",
+            "genericAssignments": 7,
+            "roleRelevantAssignments": 3,
+            "onboardingWeeksActual": 16,
+            "repeatQuestionsToSupervisor": 5
+          }
+        },
+        {
+          "id": "manish",
+          "name": "Manish D.",
+          "tenure": "6 years",
+          "assessment": 79,
+          "trainingPrecision": 70,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.62,
+            "avgAssessmentScore": 67,
+            "lastTrainingDate": "2025-12-01",
+            "genericAssignments": 6,
+            "roleRelevantAssignments": 4,
+            "onboardingWeeksActual": 14,
+            "repeatQuestionsToSupervisor": 4
+          }
+        },
+        {
+          "id": "farida",
+          "name": "Farida A.",
+          "tenure": "14 years",
+          "assessment": 88,
+          "trainingPrecision": 78,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.71,
+            "avgAssessmentScore": 74,
+            "lastTrainingDate": "2026-01-08",
+            "genericAssignments": 5,
+            "roleRelevantAssignments": 5,
+            "onboardingWeeksActual": 12,
+            "repeatQuestionsToSupervisor": 3
+          }
+        }
+      ],
+      "criticalSkills": [
+        {
+          "skill": "Ladle temperature control",
+          "required": 5,
+          "current": 3,
+          "risk": "quality",
+          "weight": 5,
+          "evidence": "temperature deviation case required senior intervention"
+        },
+        {
+          "skill": "Heat chemistry correction",
+          "required": 4,
+          "current": 2,
+          "risk": "quality",
+          "weight": 5,
+          "evidence": "needs stronger decision logic for chemistry adjustment escalation"
+        },
+        {
+          "skill": "Molten metal safety",
+          "required": 5,
+          "current": 4,
+          "risk": "safety",
+          "weight": 5,
+          "evidence": "PPE and exclusion zone checklist completed but drill score below target"
+        },
+        {
+          "skill": "Shift handover clarity",
+          "required": 4,
+          "current": 3,
+          "risk": "productivity",
+          "weight": 3,
+          "evidence": "handover notes miss pending lab confirmation status"
+        }
+      ]
+    },
+    {
+      "id": "rolling-mill-operator",
+      "name": "Rolling Mill Operator",
+      "riskOwner": "Rolling Mill + Maintenance",
+      "sampleQuestion": "What should I check when strip thickness variation increases?",
+      "businessExposure": "customer quality complaints, coil rejection, equipment stress, line stoppage",
+      "workers": [
+        {
+          "id": "pooja",
+          "name": "Pooja R.",
+          "tenure": "10 months",
+          "assessment": 63,
+          "trainingPrecision": 49,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.54,
+            "avgAssessmentScore": 61,
+            "lastTrainingDate": "2025-11-12",
+            "genericAssignments": 7,
+            "roleRelevantAssignments": 3,
+            "onboardingWeeksActual": 16,
+            "repeatQuestionsToSupervisor": 5
+          }
+        },
+        {
+          "id": "vijay",
+          "name": "Vijay M.",
+          "tenure": "5 years",
+          "assessment": 77,
+          "trainingPrecision": 66,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.62,
+            "avgAssessmentScore": 67,
+            "lastTrainingDate": "2025-12-01",
+            "genericAssignments": 6,
+            "roleRelevantAssignments": 4,
+            "onboardingWeeksActual": 14,
+            "repeatQuestionsToSupervisor": 4
+          }
+        },
+        {
+          "id": "leena",
+          "name": "Leena V.",
+          "tenure": "12 years",
+          "assessment": 90,
+          "trainingPrecision": 81,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.71,
+            "avgAssessmentScore": 74,
+            "lastTrainingDate": "2026-01-08",
+            "genericAssignments": 5,
+            "roleRelevantAssignments": 5,
+            "onboardingWeeksActual": 12,
+            "repeatQuestionsToSupervisor": 3
+          }
+        }
+      ],
+      "criticalSkills": [
+        {
+          "skill": "Thickness control troubleshooting",
+          "required": 5,
+          "current": 2,
+          "risk": "quality",
+          "weight": 5,
+          "evidence": "repeat coaching needed on separating roll gap, speed, and material causes"
+        },
+        {
+          "skill": "Mill stand inspection awareness",
+          "required": 4,
+          "current": 3,
+          "risk": "uptime",
+          "weight": 4,
+          "evidence": "inspection checklist followed but abnormal sound escalation was delayed"
+        },
+        {
+          "skill": "Coil defect classification",
+          "required": 4,
+          "current": 2,
+          "risk": "customer quality",
+          "weight": 5,
+          "evidence": "surface defect classification mismatch found in quality review"
+        },
+        {
+          "skill": "Line stop safety protocol",
+          "required": 5,
+          "current": 4,
+          "risk": "safety",
+          "weight": 5,
+          "evidence": "requires refresher for emergency stop and restart authorization"
+        }
+      ]
+    },
+    {
+      "id": "maintenance-technician-steel-plant",
+      "name": "Steel Plant Maintenance Technician",
+      "riskOwner": "Maintenance + EHS",
+      "sampleQuestion": "How should I diagnose a hydraulic pressure drop before replacing parts?",
+      "businessExposure": "unplanned downtime, unsafe isolation, spare cost, repeated breakdowns",
+      "workers": [
+        {
+          "id": "asha",
+          "name": "Asha M.",
+          "tenure": "1 year",
+          "assessment": 66,
+          "trainingPrecision": 54,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.54,
+            "avgAssessmentScore": 61,
+            "lastTrainingDate": "2025-11-12",
+            "genericAssignments": 7,
+            "roleRelevantAssignments": 3,
+            "onboardingWeeksActual": 16,
+            "repeatQuestionsToSupervisor": 5
+          }
+        },
+        {
+          "id": "ravi",
+          "name": "Ravi G.",
+          "tenure": "7 years",
+          "assessment": 80,
+          "trainingPrecision": 72,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.62,
+            "avgAssessmentScore": 67,
+            "lastTrainingDate": "2025-12-01",
+            "genericAssignments": 6,
+            "roleRelevantAssignments": 4,
+            "onboardingWeeksActual": 14,
+            "repeatQuestionsToSupervisor": 4
+          }
+        },
+        {
+          "id": "imran",
+          "name": "Imran Q.",
+          "tenure": "19 years",
+          "assessment": 92,
+          "trainingPrecision": 84,
+          "lmsBaseline": {
+            "lmsCompletionRate": 0.71,
+            "avgAssessmentScore": 74,
+            "lastTrainingDate": "2026-01-08",
+            "genericAssignments": 5,
+            "roleRelevantAssignments": 5,
+            "onboardingWeeksActual": 12,
+            "repeatQuestionsToSupervisor": 3
+          }
+        }
+      ],
+      "criticalSkills": [
+        {
+          "skill": "Hydraulic fault diagnosis",
+          "required": 4,
+          "current": 3,
+          "risk": "downtime",
+          "weight": 5,
+          "evidence": "parts replaced before root cause confirmation"
+        },
+        {
+          "skill": "LOTO and energy isolation",
+          "required": 5,
+          "current": 4,
+          "risk": "safety",
+          "weight": 5,
+          "evidence": "requires supervised sign-off for complex isolation"
+        },
+        {
+          "skill": "Preventive maintenance planning",
+          "required": 4,
+          "current": 2,
+          "risk": "uptime",
+          "weight": 4,
+          "evidence": "missed recurring lubrication and filter-change pattern"
+        },
+        {
+          "skill": "Breakdown knowledge documentation",
+          "required": 4,
+          "current": 2,
+          "risk": "knowledge loss",
+          "weight": 4,
+          "evidence": "fixes not captured after breakdown recovery"
+        }
+      ]
+    }
+  ],
+  "knowledge": [
+    {
+      "title": "Blast furnace abnormal temperature trend",
+      "tags": [
+        "blast",
+        "furnace",
+        "temperature",
+        "trend",
+        "hot",
+        "metal",
+        "burden",
+        "gas",
+        "safety"
+      ],
+      "summary": "Check recent burden pattern, hot blast parameters, gas trend, cooling water alarms, and shift log before changing operating assumptions. Escalate abnormal temperature movement early.",
+      "source": "Blast furnace operating guidance - training sample",
+      "recommendedLearning": "Micro-module: Abnormal Furnace Trend Recognition",
+      "escalation": "Escalate immediately if temperature trend is abnormal with gas, pressure, or cooling-water warning signs."
+    },
+    {
+      "title": "Steel melting ladle temperature deviation",
+      "tags": [
+        "steel",
+        "melting",
+        "shop",
+        "ladle",
+        "temperature",
+        "heat",
+        "chemistry",
+        "casting"
+      ],
+      "summary": "Confirm target range, sample timing, ladle condition, waiting time, and pending lab inputs before release. Do not make chemistry or temperature correction without authorized process guidance.",
+      "source": "SMS ladle temperature control - training sample",
+      "recommendedLearning": "Scenario drill: Ladle Temperature and Heat Release Decision",
+      "escalation": "Escalate to shift in-charge or process control if ladle temperature is outside target range."
+    },
+    {
+      "title": "Rolling mill thickness variation",
+      "tags": [
+        "rolling",
+        "mill",
+        "thickness",
+        "strip",
+        "coil",
+        "roll",
+        "gap",
+        "quality"
+      ],
+      "summary": "Check roll gap setting, speed change, incoming material condition, gauge feedback, and mill stand condition. Separate process variation from measurement issue before adjusting repeatedly.",
+      "source": "Rolling mill quality troubleshooting - training sample",
+      "recommendedLearning": "10-minute module: Thickness Variation First Response",
+      "escalation": "Escalate if variation continues after verified setting and measurement checks."
+    },
+    {
+      "title": "Hydraulic fault diagnosis in steel plant equipment",
+      "tags": [
+        "maintenance",
+        "hydraulic",
+        "fault",
+        "downtime",
+        "pressure",
+        "filter",
+        "actuator",
+        "steel"
+      ],
+      "summary": "Check pressure drop, oil temperature, filter condition, actuator leakage, and recent maintenance history before replacing components.",
+      "source": "Hydraulic troubleshooting SOP - training sample",
+      "recommendedLearning": "Scenario drill: Hydraulic Fault Tree Diagnosis",
+      "escalation": "Escalate before bypassing any interlock or replacing high-cost assemblies."
+    },
+    {
+      "title": "Expert knowledge capture for steel plant operations",
+      "tags": [
+        "knowledge",
+        "expert",
+        "capture",
+        "retirement",
+        "steel",
+        "maintenance",
+        "supervisor"
+      ],
+      "summary": "Ask experts to describe early warning signs, unsafe shortcuts to avoid, root cause clues, and the fastest safe escalation path for recurring operational issues.",
+      "source": "Steel plant knowledge capture playbook - training sample",
+      "recommendedLearning": "Supervisor guide: Expert Interview to Knowledge Article",
+      "escalation": "Send drafted article to process owner, safety, or quality reviewer before publishing."
+    }
+  ],
+  "knowledgeBacklog": [
+    {
+      "topic": "Blast furnace abnormal trend early-warning signs",
+      "owner": "Senior BF operator",
+      "status": "High value"
+    },
+    {
+      "topic": "SMS ladle temperature recovery decision examples",
+      "owner": "Steel making process expert",
+      "status": "Capture next"
+    },
+    {
+      "topic": "Rolling mill strip thickness variation troubleshooting",
+      "owner": "Rolling mill quality lead",
+      "status": "At risk"
+    },
+    {
+      "topic": "Hydraulic pressure drop recurring breakdown patterns",
+      "owner": "Maintenance expert",
+      "status": "At risk"
+    }
+  ],
+  "plantBaseline": {
+    "description": "Tata Steel Jamshedpur Works \u2014 L&D baseline metrics for AI ROI calculation",
+    "source": "L&D team estimates + industry benchmark for integrated steel plants (2025)",
+    "avgOnboardingWeeks": 14.6,
+    "avgAssessmentScore": 65.3,
+    "lmsCompletionRate": 0.61,
+    "genericAssignmentRate": 0.68,
+    "supervisorQueriesPerShift": 6,
+    "supervisorMinutesPerQuery": 8,
+    "targetOnboardingWeeks": 10,
+    "targetAssessmentScore": 78,
+    "targetThumbsUpRate": 0.75
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "skillpath-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-oriented enterprise foundation for industrial L&D skill intelligence.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "check": "node --check server/index.js && node --check prototype/app.js",
+    "test": "node server/tests/api-smoke.test.js",
+    "rag:search": "node scripts/rag-search.js",
+    "audit": "node scripts/audit-project.js",
+    "package:evaluator": "node scripts/package-for-evaluator.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "mysql2": "^3.22.3",
+    "pg": "^8.20.0"
+  }
+}

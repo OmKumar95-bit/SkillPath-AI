@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SkillPath AI - Industrial L&D Intelligence</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <section class="login-shell" id="loginShell">
+      <div class="login-card">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">SP</span>
+          <div>
+          <p class="eyebrow">Worker access</p>
+          <h1>SkillPath AI</h1>
+          <p class="login-copy">Sign in as a shopfloor worker to open your dashboard, use the chatbot safely, and keep a record of what support you used during the shift.</p>
+          </div>
+        </div>
+
+        <div class="login-grid">
+          <label for="loginRoleSelect">Worker role</label>
+          <select id="loginRoleSelect"></select>
+
+          <label for="loginWorkerSelect">Worker name</label>
+          <select id="loginWorkerSelect"></select>
+
+          <label for="loginShiftSelect">Shift context</label>
+          <select id="loginShiftSelect">
+            <option>Day shift</option>
+            <option>Night shift</option>
+            <option>New line ramp-up</option>
+            <option>Audit week</option>
+          </select>
+
+          <label for="usagePurpose">What do you need help with?</label>
+          <textarea id="usagePurpose" rows="4" placeholder="Example: troubleshoot thickness variation, revise safety checks, prepare for a supervised task"></textarea>
+        </div>
+
+        <div class="action-row">
+          <button id="workerLoginButton" class="primary" type="button">Login to worker dashboard</button>
+        </div>
+        <aside id="loginStatusMessage" class="status-message login-status" aria-live="polite">
+          Select a worker and login to open the dashboard.
+        </aside>
+      </div>
+    </section>
+
+    <main class="app-shell hidden" id="appShell">
+      <header class="topbar">
+        <div class="brand-lockup compact-brand">
+          <span class="brand-mark" aria-hidden="true">SP</span>
+          <div>
+          <p class="eyebrow">Tata Steel Jamshedpur L&D intelligence</p>
+          <h1>SkillPath AI</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <section class="session-banner" aria-label="Worker session">
+            <span>Logged in worker</span>
+            <strong id="activeWorkerName">--</strong>
+            <small id="activeSessionMeta">Session not started</small>
+          </section>
+          <div class="status-strip" aria-label="System readiness">
+          <button id="approvedContentBadge" type="button">Approved content only</button>
+          <button id="humanReviewBadge" type="button">Human review required</button>
+          <button id="sessionMode" type="button">Enterprise mode</button>
+          <button id="logoutButton" type="button">Logout</button>
+          </div>
+        </div>
+      </header>
+      <aside id="statusMessage" class="status-message" aria-live="polite">
+        Click a status control to inspect sources, review queue, or API readiness.
+      </aside>
+
+      <section class="command-center" aria-label="Leadership command center">
+        <div class="command-copy">
+          <p class="eyebrow">Leadership question</p>
+          <h2>Which workforce capability risks can affect safety, quality, or uptime this month?</h2>
+          <p>SkillPath turns fragmented training, assessment, supervisor, and expert knowledge signals into role-level actions for critical Tata Steel Jamshedpur shopfloor roles.</p>
+        </div>
+        <div class="metric-board">
+          <article>
+            <span>Capability risk</span>
+            <strong id="plantRisk">--</strong>
+            <small>weighted by safety, quality, and downtime exposure</small>
+          </article>
+          <article>
+            <span>Training precision</span>
+            <strong id="precisionScore">--</strong>
+            <small>recommended training linked to known skill gaps</small>
+          </article>
+          <article>
+            <span>Knowledge risk</span>
+            <strong id="knowledgeRisk">--</strong>
+            <small>expert-dependent topics not yet captured</small>
+          </article>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="Prototype views">
+        <button class="tab active" type="button" data-view="dashboard">Worker Dashboard</button>
+        <button class="tab" type="button" data-view="worker">Worker Coach</button>
+        <button class="tab" type="button" data-view="supervisor">Supervisor Cockpit</button>
+        <button class="tab" type="button" data-view="knowledge">Knowledge Capture</button>
+        <button class="tab" type="button" data-view="business">Business Case</button>
+        <button class="tab" type="button" data-view="analytics">AI Governance</button>
+        <button class="tab" type="button" data-view="studio">Enterprise Studio</button>
+      </nav>
+
+      <section class="workspace">
+        <aside class="control-panel">
+          <section class="profile-summary session-summary">
+            <span>Worker access log</span>
+            <strong id="sessionDuration">--</strong>
+            <p id="sessionPurpose">Login purpose will appear here after sign-in.</p>
+          </section>
+
+          <label for="roleSelect">Critical role</label>
+          <select id="roleSelect"></select>
+
+          <label for="workerSelect">Worker profile</label>
+          <select id="workerSelect"></select>
+
+          <label for="shiftSelect">Shift context</label>
+          <select id="shiftSelect">
+            <option>Day shift</option>
+            <option>Night shift</option>
+            <option>New line ramp-up</option>
+            <option>Audit week</option>
+          </select>
+
+          <label for="personaSelect">Signed-in role</label>
+          <select id="personaSelect">
+            <option value="worker">Worker</option>
+            <option value="supervisor">Supervisor</option>
+            <option value="ld-leader">L&D Leader</option>
+            <option value="quality-ehs">Quality / EHS Reviewer</option>
+            <option value="executive">Executive Sponsor</option>
+          </select>
+
+          <section class="profile-summary">
+            <span>Current risk owner</span>
+            <strong id="riskOwner">--</strong>
+            <p id="riskNarrative">Choose a role and worker to see the highest capability risk.</p>
+          </section>
+        </aside>
+
+        <section class="view-panel active" id="dashboardView">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Worker dashboard</p>
+              <h2>Training support and usage tracking for the current shift</h2>
+            </div>
+            <button id="openAssistanceButton" class="primary" type="button">Open chatbot assistance</button>
+          </div>
+          <div class="analytics-grid worker-dashboard-grid">
+            <article class="analytics-card">
+              <span>Login time</span>
+              <strong id="dashboardLoginTime">--</strong>
+              <span>start of tracked worker session</span>
+            </article>
+            <article class="analytics-card">
+              <span>Chatbot visits</span>
+              <strong id="dashboardChatVisits">0</strong>
+              <span>times worker opened AI assistance</span>
+            </article>
+            <article class="analytics-card">
+              <span>Questions asked</span>
+              <strong id="dashboardQuestionsAsked">0</strong>
+              <span>coach requests in current session</span>
+            </article>
+            <article class="analytics-card">
+              <span>Last activity</span>
+              <strong id="dashboardLastActivity">--</strong>
+              <span>latest worker interaction tracked</span>
+            </article>
+          </div>
+          <article class="answer-card">
+            <h3>Usage purpose</h3>
+            <p id="dashboardPurpose">No purpose recorded.</p>
+          </article>
+          <article class="plan-card">
+            <div class="section-head compact-head">
+              <div>
+                <p class="eyebrow">Shift intelligence</p>
+                <h3>Role risk changes by shift and operating context</h3>
+              </div>
+              <button id="refreshShiftIntel" type="button">Refresh shift view</button>
+            </div>
+            <div id="shiftIntelOutput" class="stack-output">
+              <p class="empty-state">Login to see shift-specific risk, handover focus, and learning guidance.</p>
+            </div>
+          </article>
+          <article class="plan-card">
+            <div class="section-head compact-head">
+              <div>
+                <p class="eyebrow">Closed-loop training</p>
+                <h3>Question to learning to validation</h3>
+              </div>
+              <button id="refreshTrainingLoop" type="button">Refresh learning loop</button>
+            </div>
+            <div id="trainingLoopOutput" class="stack-output">
+              <p class="empty-state">No training loop data yet.</p>
+            </div>
+          </article>
+          <article class="plan-card">
+            <h3>Worker activity database</h3>
+            <div id="workerActivityDatabase" class="database-table">
+              <p class="empty-state">No worker activity recorded yet.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="view-panel" id="workerView">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Steel plant worker coach</p>
+              <h2>Simple answer, role-specific action</h2>
+            </div>
+            <button id="sampleQuestion" type="button">Use sample question</button>
+          </div>
+          <textarea id="questionInput" rows="4" placeholder="Ask a training or troubleshooting question"></textarea>
+          <div class="action-row">
+            <button id="askButton" class="primary" type="button">Generate coached answer</button>
+            <button id="clearButton" type="button">Clear</button>
+          </div>
+          <article id="answerCard" class="answer-card" aria-live="polite">
+            <p class="empty-state">Ask a question to see grounded guidance, a recommended learning item, and a supervisor follow-up.</p>
+          </article>
+
+        </section>
+
+        <section class="view-panel" id="supervisorView">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Supervisor cockpit</p>
+              <h2>Coaching priorities for the next two weeks</h2>
+            </div>
+            <button id="generatePlan" class="primary" type="button">Build coaching plan</button>
+          </div>
+          <div id="skillGrid" class="skill-grid"></div>
+          <article id="coachingPlan" class="plan-card">
+            <p class="empty-state">Generate a coaching plan to convert skill gaps into shift-level actions.</p>
+          </article>
+          <article class="plan-card">
+            <div class="section-head compact-head">
+              <div>
+                <p class="eyebrow">Evidence validation</p>
+                <h3>Supervisor evidence before skill credit</h3>
+              </div>
+            </div>
+            <div class="studio-grid evidence-grid">
+              <article>
+                <label for="evidenceSkill">Skill observed</label>
+                <input id="evidenceSkill" type="text" value="Furnace parameter monitoring">
+                <label for="evidenceObservation">Observation evidence</label>
+                <textarea id="evidenceObservation" rows="4">Worker completed safe checks, explained escalation logic, and identified abnormal trend signals during live shift observation.</textarea>
+                <label for="evidenceOutcome">Validation outcome</label>
+                <select id="evidenceOutcome">
+                  <option value="validated">Validated</option>
+                  <option value="needs-coaching">Needs coaching</option>
+                  <option value="escalated">Escalated</option>
+                </select>
+                <button id="submitEvidence" class="primary" type="button">Submit evidence</button>
+              </article>
+              <article>
+                <h3>Recent supervisor evidence</h3>
+                <div id="evidenceOutput" class="stack-output">
+                  <p class="empty-state">No supervisor evidence submitted yet.</p>
+                </div>
+              </article>
+            </div>
+          </article>
+        </section>
+
+        <section class="view-panel" id="knowledgeView">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Tacit knowledge capture</p>
+              <h2>Turn expert know-how into reusable training assets</h2>
+            </div>
+            <button id="captureButton" class="primary" type="button">Generate capture pack</button>
+          </div>
+          <article class="plan-card">
+            <div class="section-head compact-head">
+              <div>
+                <p class="eyebrow">Expert dependency</p>
+                <h3>Knowledge risk meter by role</h3>
+              </div>
+              <button id="refreshExpertRisk" type="button">Refresh expert risk</button>
+            </div>
+            <div id="expertRiskOutput" class="analytics-grid"></div>
+          </article>
+          <div id="knowledgeBacklog" class="knowledge-list"></div>
+          <pre id="captureOutput">Select a role, then generate an interview pack.</pre>
+        </section>
+
+        <section class="view-panel" id="businessView">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Business case</p>
+              <h2>Pilot impact estimator</h2>
+            </div>
+          </div>
+          <div class="impact-calculator">
+            <label for="workerCount">Pilot workers</label>
+            <input id="workerCount" type="number" min="10" max="1000" value="120">
+            <label for="questionCount">Repeated questions per worker per week</label>
+            <input id="questionCount" type="number" min="1" max="20" value="2">
+            <label for="minutesSaved">Minutes saved per resolved question</label>
+            <input id="minutesSaved" type="number" min="1" max="30" value="5">
+            <button id="calculateImpact" class="primary" type="button">Calculate impact</button>
+          </div>
+          <article id="impactOutput" class="answer-card"></article>
+          <div class="governance">
+            <h3>Industry readiness controls</h3>
+            <ul>
+              <li>Answers limited to approved SOP, training, and assessment content.</li>
+              <li>Low-confidence answers require supervisor review.</li>
+              <li>Skill recommendations include evidence, not only AI judgement.</li>
+              <li>Worker-facing language is short, simple, and action-oriented.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="view-panel" id="analyticsView">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">AI governance</p>
+              <h2>Trust, auditability, and scale readiness</h2>
+            </div>
+            <button id="refreshAnalytics" class="primary" type="button">Refresh analytics</button>
+          </div>
+          <div id="analyticsGrid" class="analytics-grid"></div>
+          <article class="plan-card">
+            <div class="section-head compact-head">
+              <div>
+                <p class="eyebrow">Safety escalation queue</p>
+                <h3>Questions blocked or routed to review</h3>
+              </div>
+              <button id="refreshSafetyQueue" type="button">Refresh safety queue</button>
+            </div>
+            <div id="safetyQueueOutput" class="stack-output">
+              <p class="empty-state">No safety escalation items yet.</p>
+            </div>
+          </article>
+          <article class="governance">
+            <h3>2026 enterprise differentiators</h3>
+            <ul>
+              <li>RAG-ready architecture with citations and source control.</li>
+              <li>Safety-sensitive questions move to human review instead of free-form advice.</li>
+              <li>Every AI answer can be audited by user role, source, confidence, and review status.</li>
+              <li>Feedback loop measures supervisor trust and improves the knowledge backlog.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="view-panel" id="studioView">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Enterprise studio</p>
+              <h2>Admin, learning, assessment, approvals, and multilingual mode</h2>
+            </div>
+            <button id="runStudioDemo" class="primary" type="button">Run studio demo</button>
+          </div>
+
+          <div class="studio-grid">
+            <article>
+              <h3>Document upload</h3>
+              <input id="docTitle" type="text" value="shift-handover-quality-note">
+              <textarea id="docContent" rows="5">Shift handover at Tata Steel Jamshedpur Works must include open safety risks, equipment abnormality, quality status, pending lab or inspection confirmation, and escalation owner before line release.</textarea>
+              <button id="uploadDoc" type="button">Upload to RAG</button>
+            </article>
+
+            <article>
+              <h3>Learning path</h3>
+              <button id="generateLearningPath" type="button">Generate 14-day plan</button>
+              <div id="learningPathOutput"></div>
+            </article>
+
+            <article>
+              <h3>Assessment engine</h3>
+              <button id="generateAssessment" type="button">Generate scenario checks</button>
+              <div id="assessmentOutput"></div>
+            </article>
+
+            <article>
+              <h3>Approval workflow</h3>
+              <button id="submitApproval" type="button">Submit recommendation for approval</button>
+              <button id="loadApprovals" type="button">Load approval queue</button>
+              <div id="approvalOutput"></div>
+            </article>
+
+            <article>
+              <h3>Role-based access</h3>
+              <button id="loadAccessMatrix" type="button">Show access matrix</button>
+              <div id="accessOutput"></div>
+            </article>
+
+            <article>
+              <h3>Multilingual shopfloor mode</h3>
+              <select id="languageSelect">
+                <option>Hindi</option>
+                <option>Marathi</option>
+              </select>
+              <button id="translateAnswer" type="button">Translate safe instruction</button>
+              <div id="translationOutput"></div>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
