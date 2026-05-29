@@ -104,7 +104,7 @@ async function api(path, options = {}) {
     ...(workerSession && workerSession.sessionId ? { "x-session-id": workerSession.sessionId } : {}),
     ...(options.headers || {})
   };
-  const baseUrl = localStorage.getItem("BACKEND_URL") || "";
+  const baseUrl = localStorage.getItem("BACKEND_URL") || "https://skillpath-backend-hdum.onrender.com";
   const response = await fetch(`${baseUrl}${path}`, { ...options, headers });
   if (!response.ok) {
     throw new Error(`API ${response.status}`);
