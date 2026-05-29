@@ -40,6 +40,21 @@
         <div class="action-row">
           <button id="workerLoginButton" class="primary" type="button">Login to worker dashboard</button>
         </div>
+
+        <div class="backend-config" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed rgba(255, 255, 255, 0.15);">
+          <details>
+            <summary style="font-size: 0.85rem; color: var(--text-muted, #a0aec0); cursor: pointer; user-select: none; font-weight: 500;">⚙️ Connection Settings (Render Backend)</summary>
+            <div style="margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="backendUrlInput" style="font-size: 0.8rem; color: var(--text-muted, #a0aec0); text-align: left;">Render Backend URL</label>
+              <div style="display: flex; gap: 0.5rem;">
+                <input id="backendUrlInput" type="url" placeholder="https://skillpath-backend.onrender.com" style="flex: 1; padding: 0.5rem; font-size: 0.85rem; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: #fff; outline: none;">
+                <button id="saveBackendUrlButton" type="button" style="padding: 0.5rem 1rem; font-size: 0.85rem; background: #3182ce; border: none; border-radius: 4px; color: white; cursor: pointer; font-weight: 600; transition: background 0.2s;">Save</button>
+              </div>
+              <p style="font-size: 0.72rem; color: #a0aec0; margin: 0; text-align: left;">Enter your deployed Render backend link to connect this static frontend to your online MySQL database. Leave empty to use local server or offline fallback.</p>
+            </div>
+          </details>
+        </div>
+
         <aside id="loginStatusMessage" class="status-message login-status" aria-live="polite">
           Select a worker and login to open the dashboard.
         </aside>

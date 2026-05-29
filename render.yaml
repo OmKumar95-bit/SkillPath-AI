@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: skillpath-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: ALLOWED_ORIGIN
+        value: "*"
+      # Database connection parameters (to be filled during Render setup)
+      - key: MYSQL_HOST
+        sync: false
+        placeholder: "MySQL Hostname (e.g. mysql.aivencloud.com)"
+      - key: MYSQL_PORT
+        value: 3306
+      - key: MYSQL_DATABASE
+        value: skillpath_ai
+      - key: MYSQL_USER
+        sync: false
+        placeholder: "MySQL Username"
+      - key: MYSQL_PASSWORD
+        sync: false
+        placeholder: "MySQL Password"

@@ -104,7 +104,8 @@ async function api(path, options = {}) {
     ...(workerSession && workerSession.sessionId ? { "x-session-id": workerSession.sessionId } : {}),
     ...(options.headers || {})
   };
-  const response = await fetch(path, { ...options, headers });
+  const baseUrl = localStorage.getItem("BACKEND_URL") || "";
+  const response = await fetch(`${baseUrl}${path}`, { ...options, headers });
   if (!response.ok) {
     throw new Error(`API ${response.status}`);
   }
@@ -1000,6 +1001,11 @@ async function openChatbotAssistance() {
 }
 
 async function boot() {
+  const savedUrl = localStorage.getItem("BACKEND_URL") || "";
+  const backendUrlInput = document.querySelector("#backendUrlInput");
+  if (backendUrlInput) {
+    backendUrlInput.value = savedUrl;
+  }
   try {
     const bootstrap = await api("/api/bootstrap");
     DATA = bootstrap;
@@ -1060,5 +1066,30 @@ document.querySelector("#refreshShiftIntel").addEventListener("click", refreshSh
 document.querySelector("#refreshTrainingLoop").addEventListener("click", refreshTrainingLoop);
 document.querySelector("#refreshExpertRisk").addEventListener("click", refreshExpertRisk);
 document.querySelector("#refreshSafetyQueue").addEventListener("click", refreshSafetyQueue);
+
+const saveBackendBtn = document.querySelector("#saveBackendUrlButton");
+if (saveBackendBtn) {
+  saveBackendBtn.addEventListener("click", () => {
+    const rawUrl = document.querySelector("#backendUrlInput").value.trim();
+    let cleanUrl = rawUrl;
+    if (cleanUrl && cleanUrl.endsWith("/")) {
+      cleanUrl = cleanUrl.slice(0, -1);
+    }
+    if (cleanUrl) {
+      localStorage.setItem("BACKEND_URL", cleanUrl);
+      loginStatusMessage.textContent = `Backend connection URL saved: ${cleanUrl}. Retrying connection...`;
+    } else {
+      localStorage.removeItem("BACKEND_URL");
+      loginStatusMessage.textContent = "Connection URL reset. Using relative path / local server.";
+    }
+    boot().then(() => {
+      if (apiAvailable) {
+        loginStatusMessage.textContent = `Connected successfully to backend: ${cleanUrl || "local"}!`;
+      } else {
+        loginStatusMessage.textContent = `Could not reach backend at ${cleanUrl || "local"}. Running in offline demo mode.`;
+      }
+    });
+  });
+}
 
 boot();
